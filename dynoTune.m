@@ -1,4 +1,14 @@
 %%Instructions%%
+
+%Dyno function to take in the fuel table that was tuned and gain general
+%values for the rest of the table that was not able to be reached by the
+%dyno.
+
+%INPUTS: the excel filename with the data from the dyno
+
+%OUTPUTS: excel filename with the adjusted fuel table. Has the tuned data
+%and the estimated data.
+
 %create excel sheet where first row of it is label RPM, first column is
 %label for Manifold Pressure, second row is RPM values, second column is
 %Manifold Pressure values. The rest inside are the fuel table values from the
@@ -6,6 +16,9 @@
 %with the same value as the last possible value you were able to find.
 %Example column: 70 63 58 56 55 54 54 54 54 54
 %The first 54 was tested and found and the others put in as a placeholder
+
+%The first data point for the fuel table should start at B3 in the excel
+%document.
 function[fileName] = dynoTune(filename)
     cellArray = readcell(filename);
     [r, c] = size(cellArray);
